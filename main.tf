@@ -2,7 +2,7 @@ data "aws_ami" "amazon-linux-3" {
   most_recent = true
 
   owners = ["amazon"]
-  
+
   filter {
     name   = "name"
     values = ["al2023-ami-2023*"]
@@ -34,4 +34,17 @@ resource "aws_instance" "dev-instance" {
     Name        = "My Network"
     Environment = "Dev"
   }
+}
+
+
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "var.bucket_name"
+   tags = {
+     Name        = "My bucket"
+     Environment = "Dev"
+   }
 }
