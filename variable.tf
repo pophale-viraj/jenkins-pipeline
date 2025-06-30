@@ -9,3 +9,7 @@ variable "instance_count" {
 variable "instance_key" {
   type = string
 }
+
+variable "bucket_name" {
+  type = string
+}
